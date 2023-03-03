@@ -10,16 +10,25 @@ function LoginPage() {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [hasClicked, setHasClicked] = useState(false);
   const movieState = useSelector((state) => {
     return state.movie;
   });
   const dispatch = useDispatch();
   const handleSubmit = () => {
     dispatch(movieUserLoginAction(userName, password));
-    navigate("/");
+    setHasClicked(true);
+  };
+  const handleLoginFailed = () => {
+    if (movieState.sessionID !== "") {
+      navigate("/");
+    } else {
+      return movieState.loading ? "" : <div>login failed</div>;
+    }
   };
   return (
     <FormContainer>
+      {hasClicked && handleLoginFailed()}
       <label>
         UserName:
         <input
