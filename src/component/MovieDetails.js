@@ -7,7 +7,10 @@ import { API } from "../constant";
 import Select from "react-select";
 import Button from "./Button";
 import { useDispatch, useSelector } from "react-redux";
-import { movieSetRateAction } from "../Actions/MovieAction";
+import {
+  movieSetRateAction,
+  movieRatedListAddAction,
+} from "../Actions/MovieAction";
 const MovieDetailsContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -83,7 +86,7 @@ export default function MovieDetails() {
     { value: "7", label: "7" },
     { value: "8", label: "8" },
     { value: "9", label: "9" },
-    { value: "10", label: "10" }
+    { value: "10", label: "10" },
   ];
 
   useEffect(() => {
@@ -132,6 +135,7 @@ export default function MovieDetails() {
           <Button
             onClick={() => {
               handleRate(details.id);
+              navigate("/Rated");
             }}
           >
             rate it

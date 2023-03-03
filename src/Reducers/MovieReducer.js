@@ -13,7 +13,7 @@ const initlState = {
   loading: false,
   sessionID: "",
   accountID: "",
-  userName: ""
+  userName: "",
 };
 
 const reducer = (state = initlState, action) => {
@@ -21,19 +21,19 @@ const reducer = (state = initlState, action) => {
     case Actions.MOVIE_SET_ACTIVE_TAB: {
       return {
         ...state,
-        activeTab: action.payload
+        activeTab: action.payload,
       };
     }
     case Actions.MOVIE_SET_CURRENT_CATEGORY: {
       return {
         ...state,
-        category: action.payload
+        category: action.payload,
       };
     }
     case Actions.MOVIE_SET_TOTAL: {
       return {
         ...state,
-        totalPage: action.payload
+        totalPage: action.payload,
       };
     }
     case Actions.MOVIE_NEXT_PAGE: {
@@ -43,55 +43,55 @@ const reducer = (state = initlState, action) => {
           : state.currentPage + 1;
       return {
         ...state,
-        currentPage: curPage
+        currentPage: curPage,
       };
     }
     case Actions.MOVIE_PREV_PAGE: {
       const curPage = state.currentPage === 1 ? 1 : state.currentPage - 1;
       return {
         ...state,
-        currentPage: curPage
+        currentPage: curPage,
       };
     }
     case Actions.MOVIE_CURRENT_PAGE: {
       return {
         ...state,
-        currentPage: action.payload
+        currentPage: action.payload,
       };
     }
     case Actions.MOVIE_ADD_LIST_START: {
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       };
     }
     case Actions.MOVIE_ADD_LIST_FAILED: {
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       };
     }
     case Actions.MOVIE_ADD_LIST_SUCCESS: {
       return {
         ...state,
         loading: false,
-        movieList: action.payload
+        movieList: action.payload,
       };
     }
     case Actions.MOVIE_USER_LOGIN_START: {
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       };
     }
     case Actions.MOVIE_USER_LOGIN_FAILED: {
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       };
     }
     case Actions.MOVIE_USER_LOGIN_SUCCESS: {
@@ -100,94 +100,89 @@ const reducer = (state = initlState, action) => {
         loading: false,
         sessionID: action.payload.sessionID,
         accountID: action.payload.accountID,
-        userName: action.payload.userName
-      };
-    }
-    case Actions.MOVIE_SET_USER_SEESION: {
-      return {
-        ...state
+        userName: action.payload.userName,
       };
     }
     case Actions.MOVIE_ADD_FAVORITE_START: {
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       };
     }
     case Actions.MOVIE_ADD_FAVORITE_FAILED: {
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       };
     }
     case Actions.MOVIE_ADD_FAVORITE_SUCCESS: {
       return {
         ...state,
-        loading: false
+        loading: false,
       };
     }
     case Actions.MOVIE_SET_RATE_START: {
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       };
     }
     case Actions.MOVIE_SET_RATE_FAILED: {
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       };
     }
     case Actions.MOVIE_SET_RATE_SUCCESS: {
       return {
         ...state,
-        loading: false
+        loading: false,
       };
     }
     case Actions.MOVIE_ADD_FAVORITE_LIST_START: {
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       };
     }
     case Actions.MOVIE_ADD_FAVORITE_LIST_FAILED: {
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       };
     }
     case Actions.MOVIE_ADD_FAVORITE_LIST_SUCCESS: {
       return {
         ...state,
         loading: false,
-        likedList: action.payload
+        likedList: action.payload,
       };
     }
     case Actions.MOVIE_ADD_RATED_LIST_START: {
       return {
         ...state,
         loading: true,
-        error: null
+        error: null,
       };
     }
     case Actions.MOVIE_ADD_RATED_LIST_FAILED: {
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       };
     }
     case Actions.MOVIE_ADD_RATED_LIST_SUCCESS: {
       return {
         ...state,
         loading: false,
-        ratedList: action.payload
+        ratedList: action.payload,
       };
     }
     case Actions.MOVIE_USER_SIGNOUT: {
@@ -195,7 +190,7 @@ const reducer = (state = initlState, action) => {
         ...state,
         sessionID: "",
         userName: "",
-        accountID: ""
+        accountID: "",
       };
     }
     default:
