@@ -6,6 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 const FormContainer = styled.div`
   text-align: center;
 `;
+const ErrorMessage = styled.div`
+  color: red;
+`;
 function LoginPage() {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
@@ -15,15 +18,25 @@ function LoginPage() {
     return state.movie;
   });
   const dispatch = useDispatch();
-  const handleSubmit = () => {
-    dispatch(movieUserLoginAction(userName, password));
+  const handleLogin = () => {
     setHasClicked(true);
+    dispatch(movieUserLoginAction(userName, password));
   };
   const handleLoginFailed = () => {
     if (movieState.sessionID !== "") {
       navigate("/");
     } else {
       return movieState.loading ? "" : <div>login failed</div>;
+    }
+  };
+  const handleRequiredUserName = (userName) => {
+    if (userName === "" && hasClicked) {
+      return <ErrorMessage>please input userName before sumbit</ErrorMessage>;
+    }
+  };
+  const handleRequiredPassword = (password) => {
+    if (password === "" && hasClicked) {
+      return <ErrorMessage>please input password before sumbit</ErrorMessage>;
     }
   };
   return (
@@ -39,8 +52,10 @@ function LoginPage() {
           onChange={(e) => {
             setUserName(e.target.value);
           }}
+          required
         />
       </label>
+      {handleRequiredUserName(userName)}
       <br />
       <label>
         password:{" "}
@@ -52,10 +67,12 @@ function LoginPage() {
           onChange={(e) => {
             setPassword(e.target.value);
           }}
+          required
         />
       </label>
+      {handleRequiredPassword(password)}
       <br />
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleLogin}>Submit</button>
     </FormContainer>
   );
 }
